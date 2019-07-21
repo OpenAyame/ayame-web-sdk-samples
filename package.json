@@ -1,0 +1,24 @@
+{
+  "name": "ayame-web-sdk-samples",
+  "version": "0.0.1",
+  "description": "ayame-web-sdk-samples",
+  "main": "index.js",
+  "scripts": {
+    "watch": "wp --config ./webpack.config"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/OpenAyame/ayame-web-sdk-samples.git"
+  },
+  "author": "Shiguredo Inc.",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/OpenAyame/ayame-web-sdk-samples/issues"
+  },
+  "homepage": "https://github.com/OpenAyame/ayame-web-sdk-samples#readme",
+  "devDependencies": {
+    "webpack": "^4.36.1",
+    "webpack-nano": "^0.7.1",
+    "webpack-plugin-serve": "^0.11.0"
+  }
+}
