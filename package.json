@@ -4,7 +4,7 @@
   "description": "ayame-web-sdk-samples",
   "main": "index.js",
   "scripts": {
-    "watch": "wp --config ./webpack.config"
+    "serve": "wp --config ./webpack.config"
   },
   "repository": {
     "type": "git",

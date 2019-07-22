@@ -18,5 +18,7 @@ ayame-web-sdk-samples
 yarn serve
 ```
 
+localhost:3000 で閲覧可能です。
+
 
 
