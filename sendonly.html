@@ -8,16 +8,19 @@
       <button onclick="startConn();">接続</button>
       <button onclick="conn.disconnect();">切断</button>
       <div style="float:left;">
-        <video id="local-video" autoplay="" style="width: 400px; height: 300px; border: 1px solid black;"></video>
+        <video id="local-video" autoplay style="width: 400px; height: 300px; border: 1px solid black;"></video>
       </div>
-      <script src="https://unpkg.com/@open-ayame/ayame-web-sdk@0.0.1-rc4/dist/ayame.min.js"></script>
+      <script src="https://unpkg.com/@open-ayame/ayame-web-sdk@0.0.1-rc5/dist/ayame.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
+      <script src="./main.js"></script>
       <script type="text/javascript">
-        const conn = Ayame.connection('wss://ayame.shiguredo.jp/ws', 'ayame-test-room');
-        conn.options.video.direction = 'sendonly';
-        conn.options.audio.direction = 'sendonly';
-        const remoteVideo = document.querySelector('#remote-video');
+        const options = Ayame.defaultOptions;
+        options.clientId = clientId ? clientId : options.clientId;
+        options.video.direction = 'sendonly';
+        options.audio.direction = 'sendonly';
+        const conn = Ayame.connection(signalingUrl, roomId, options);
         const startConn = async () => {
-          const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true})
+          const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true});
           conn.on('connect', ({authzMetadata}) => console.log(authzMetadata));
           conn.on('disconnect', (e) => console.log(e));
           const stream = await conn.connect(mediaStream);

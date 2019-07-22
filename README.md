@@ -22,3 +22,13 @@ localhost:3000 で閲覧可能です。
 
 
 
+## clientId, roomId を指定
+
+query string で指定可能です。
+
+```
+http://localhost:3000/recvonly.html?clientId=hoge&roomId=fuga
+```
+
+
+
