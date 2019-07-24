@@ -1,6 +1,5 @@
 ## ayame-web-sdk-samples
 
----
 
 [OpenAyame/ayame-web-sdk](https://github.com/OpenAyame/ayame-web-sdk) のサンプル集です。
 
