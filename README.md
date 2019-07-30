@@ -36,6 +36,8 @@ const signalingUrl = 'wss://ayame.shiguredo.jp/ws';
 - [recvonly(受信のみ)](./recvonly.html)
 - [sendonly(送信のみ)](./sendonly.html)
 - [getDisplayMedia(画面共有)](./displaymedia.html)
+- [コーデック指定](./codec.html)
+    - 2019/07/30 現在 Chrome Canary(M78) でのみサポート
 
 
 
