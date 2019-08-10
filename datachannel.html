@@ -1,12 +1,12 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Ayame SendOnly Sample</title>
+        <title>Ayame DataChannel Sample</title>
         <link rel="stylesheet" href="https://cdn.rawgit.com/Chalarangelo/mini.css/v3.0.1/dist/mini-default.min.css">
     </head>
     <body>
       <header class="sticky row">
-          <h4>Ayame SendOnly Sample</h4>
+        <h4>Ayame DataChannel Sample</h4>
       </header>
       <div>
         <p>ルームID
@@ -17,24 +17,31 @@
         </p>
         <button onclick="startConn();">接続</button>
         <button onclick="conn.disconnect();">切断</button>
-      </div>
-      <div style="float:left;">
-        <video id="local-video" autoplay style="width: 400px; height: 300px; border: 1px solid black;"></video>
+        <p> 送信するメッセージ
+        <input id="sendDataInput" type="text" value="🐶"></input>
+        </p>
+        <button onclick="sendData();">送信</button>
+        <p> 受信したメッセージ </p>
+        <textarea style="height:200px;" id="messages" disabled type="text" value=""></textarea>
       </div>
       <script src="https://cdn.jsdelivr.net/npm/@open-ayame/ayame-web-sdk@19.8.0/dist/ayame.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
       <script src="./main.js"></script>
       <script type="text/javascript">
+        const remoteVideo = document.querySelector('#remote-video');
         const options = Ayame.defaultOptions;
         options.clientId = clientId ? clientId : options.clientId;
-        options.video.direction = 'sendonly';
-        options.audio.direction = 'sendonly';
         const conn = Ayame.connection(signalingUrl, roomId, options, true);
         const startConn = async () => {
-          const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true});
-          conn.on('disconnect', (e) => console.log(e));
-          await conn.connect(mediaStream);
-          document.querySelector('#local-video').srcObject = mediaStream;
+          conn.on('data', (e) => {
+            messages = messages ? (messages + '\n' + e.data) : e.data;
+            document.querySelector("#messages").value = messages;
+          });
+          await conn.connect(null);
+        };
+        const sendData = () => {
+          const data = document.querySelector("#sendDataInput").value;
+          conn.sendData(data);
         };
         document.querySelector("#roomIdInput").value = roomId;
         document.querySelector("#clientIdInput").value = options.clientId;

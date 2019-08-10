@@ -25,7 +25,7 @@ http://localhost:3000/recvonly.html?clientId=hoge&roomId=fuga
 `./main.js`
 の 
 ```javascript
-const signalingUrl = 'wss://ayame.shiguredo.jp/ws';
+const signalingUrl = 'wss://ayame-lite.shiguredo.jp/signaling';
 ```
 
 を適宜書き換えることで、変更可能です。
@@ -37,7 +37,7 @@ const signalingUrl = 'wss://ayame.shiguredo.jp/ws';
 - [sendonly(送信のみ)](./sendonly.html)
 - [getDisplayMedia(画面共有)](./displaymedia.html)
 - [コーデック指定](./codec.html)
-    - 2019/07/30 現在 Chrome Canary(M78) でのみサポート
+- [DataChannel](./datachannel.html)
 
 
 

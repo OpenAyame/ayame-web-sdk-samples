@@ -24,7 +24,7 @@
       <div style="float:right;">
         <video id="remote-video" autoplay style="width: 400px; height: 300px; border: 1px solid black;"></video>
       </div>
-      <script src="https://unpkg.com/@open-ayame/ayame-web-sdk@19.7.2-rc0/dist/ayame.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@open-ayame/ayame-web-sdk@19.8.0/dist/ayame.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
       <script src="./main.js"></script>
       <script type="text/javascript">
@@ -35,7 +35,7 @@
         const startConn = async () => {
           const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true})
           const authnMetadata = {hoge: "fuga"};
-          conn.on('connect', ({authzMetadata}) => console.log(authzMetadata));
+          conn.on('open', ({authzMetadata}) => console.log(authzMetadata));
           conn.on('disconnect', (e) => console.log(e));
           conn.on('addstream', async (e) => {
             console.log(e.stream);
@@ -46,8 +46,8 @@
               console.log('error auto play:' + error);
             }
           });
-          const stream = await conn.connect(mediaStream, authnMetadata);
-          document.querySelector('#local-video').srcObject = stream;
+          await conn.connect(mediaStream, { authnMetadata });
+          document.querySelector('#local-video').srcObject = mediaStream;
         };
         document.querySelector("#roomIdInput").value = roomId;
         document.querySelector("#clientIdInput").value = options.clientId;
