@@ -33,7 +33,7 @@
         const startConn = async () => {
           const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true});
           conn.on('disconnect', (e) => console.log(e));
-          await conn.connect(mediaStream);
+          await conn.connect(mediaStream, {key: signalingKey});
           document.querySelector('#local-video').srcObject = mediaStream;
         };
         document.querySelector("#roomIdInput").value = roomId;

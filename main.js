@@ -3,6 +3,7 @@ let roomId = 'ayame-test-room';
 let clientId = null;
 let videoCodec = null;
 let audioCodec = null;
+let signalingKey = null;
 
 function onChangeVideoCodec() {
   videoCodec = document.getElementById("video-codec").value;
@@ -21,6 +22,9 @@ function parseQueryString() {
     }
     if (params.clientId) {
       clientId = params.clientId;
+    }
+    if (params.key) {
+      signalingKey = params.key;
     }
   }
 }

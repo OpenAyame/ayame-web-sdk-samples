@@ -11,7 +11,7 @@ yarn serve
 
 localhost:3000 で閲覧可能です。
 
-## clientId, roomId を指定したい
+## clientId, roomId  を指定したい
 
 query string で指定可能です。
 
@@ -19,11 +19,21 @@ query string で指定可能です。
 http://localhost:3000/recvonly.html?clientId=hoge&roomId=fuga
 ```
 
+## シグナリングキーを指定したい
+
+query string で指定可能です。
+
+```
+http://localhost:3000/recvonly.html?key=xxxxxxxxxxxxx
+```
+
 
 ## シグナリング URL を変更したい
 
 `./main.js`
+
 の 
+
 ```javascript
 const signalingUrl = 'wss://ayame-lite.shiguredo.jp/signaling';
 ```

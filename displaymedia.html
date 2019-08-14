@@ -35,7 +35,6 @@
         const remoteVideo = document.querySelector('#remote-video');
         const startConn = async () => {
           const mediaStream = await navigator.mediaDevices.getDisplayMedia();
-          const authnMetadata = {hoge: "fuga"};
           conn.on('connect', ({authzMetadata}) => console.log(authzMetadata));
           conn.on('disconnect', (e) => console.log(e));
           conn.on('addstream', async (e) => {
@@ -47,7 +46,7 @@
               console.log('error auto play:' + error);
             }
           });
-          const stream = await conn.connect(mediaStream, authnMetadata);
+          await conn.connect(mediaStream, { key: signalingKey });
           document.querySelector('#local-video').srcObject = stream;
         };
         document.querySelector("#roomIdInput").value = roomId;

@@ -46,7 +46,7 @@
               console.log('error auto play:' + error);
             }
           });
-          await conn.connect(mediaStream, { authnMetadata });
+          await conn.connect(mediaStream, { authnMetadata, key: signalingKey });
           document.querySelector('#local-video').srcObject = mediaStream;
         };
         document.querySelector("#roomIdInput").value = roomId;

@@ -37,7 +37,7 @@
             messages = messages ? (messages + '\n' + e.data) : e.data;
             document.querySelector("#messages").value = messages;
           });
-          await conn.connect(null);
+          await conn.connect(null, { key: signalingKey });
         };
         const sendData = () => {
           const data = document.querySelector("#sendDataInput").value;
