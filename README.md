@@ -3,6 +3,12 @@
 
 [OpenAyame/ayame-web-sdk](https://github.com/OpenAyame/ayame-web-sdk) のサンプル集です。
 
+## yarn install でセットアップ
+
+```
+yarn install
+```
+
 ## yarn で起動
 
 ```
