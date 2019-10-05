@@ -10,13 +10,13 @@
       </header>
       <div>
         <p>ルームID
-        <input id="roomIdInput" disabled type="text" value=""></input>
+        <input id="roomIdInput" type="text" value=""></input>
         </p>
         <p>クライアントID
         <input id="clientIdInput" disabled type="text" value=""></input>
         </p>
         <button onclick="startConn();">接続</button>
-        <button onclick="conn.disconnect();">切断</button>
+        <button onclick="disconnect();">切断</button>
         <p> 送信するメッセージ
         <input id="sendDataInput" type="text" value="🐶"></input>
         </p>
@@ -31,8 +31,14 @@
         const remoteVideo = document.querySelector('#remote-video');
         const options = Ayame.defaultOptions;
         options.clientId = clientId ? clientId : options.clientId;
-        const conn = Ayame.connection(signalingUrl, roomId, options, true);
+        let conn;
+        const disconnect = () => {
+          if (conn) {
+            conn.disconnect();
+          }
+        }
         const startConn = async () => {
+          conn = Ayame.connection(signalingUrl, roomId, options, true);
           conn.on('data', (e) => {
             messages = messages ? (messages + '\n' + e.data) : e.data;
             document.querySelector("#messages").value = messages;

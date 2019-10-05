@@ -1,5 +1,5 @@
 const signalingUrl = 'wss://ayame-lite.shiguredo.jp/signaling';
-let roomId = 'ayame-test-room';
+let roomId = 'ayame-sdk-test';
 let clientId = null;
 let videoCodec = null;
 let audioCodec = null;
@@ -11,7 +11,6 @@ function onChangeVideoCodec() {
     videoCodec = null;
   }
 }
-
 // query string から roomId, clientId を取得するヘルパー
 function parseQueryString() {
   const qs = window.Qs;
@@ -29,5 +28,12 @@ function parseQueryString() {
   }
 }
 
+
 parseQueryString();
+
+const roomIdInput = document.getElementById("roomIdInput");
+roomIdInput.addEventListener('change', (event) => {
+  console.log(event);
+  roomId = event.target.value;
+});
 
