@@ -22,8 +22,8 @@ function parseQueryString() {
     if (params.clientId) {
       clientId = params.clientId;
     }
-    if (params.key) {
-      signalingKey = params.key;
+    if (params.signalingKey) {
+      signalingKey = params.signalingKey;
     }
   }
 }

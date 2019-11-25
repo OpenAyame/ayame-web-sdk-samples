@@ -40,6 +40,9 @@
         let conn = null;
         const options = Ayame.defaultOptions;
         options.clientId = clientId ? clientId : options.clientId;
+        if (signalingKey) {
+          options.signalingKey = signalingKey;
+        }
         const startConn = async () => {
           options.video.codec = videoCodec;
           options.audio.codec = audioCodec;
@@ -55,7 +58,7 @@
               console.log('error auto play:' + error);
             }
           });
-          await conn.connect(mediaStream, { key: signalingKey });
+          await conn.connect(mediaStream, null);
           document.querySelector('#local-video').srcObject = mediaStream;
         };
         document.querySelector("#roomIdInput").value = roomId;

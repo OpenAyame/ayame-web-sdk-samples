@@ -27,6 +27,9 @@
       <script type="text/javascript">
         const options = Ayame.defaultOptions;
         options.clientId = clientId ? clientId : options.clientId;
+        if (signalingKey) {
+          options.signalingKey = signalingKey;
+        }
         options.video.direction = 'recvonly';
         options.audio.direction = 'recvonly';
         let conn;
@@ -37,7 +40,7 @@
         }
         const startConn = async () => {
           conn = Ayame.connection(signalingUrl, roomId, options, true);
-          await conn.connect(null, { key: signalingKey });
+          await conn.connect(null);
           conn.on('open', ({authzMetadata}) => console.log(authzMetadata));
           conn.on('disconnect', (e) => console.log(e));
           conn.on('addstream', (e) => {

@@ -34,7 +34,7 @@ http://localhost:3000/recvonly.html?clientId=hoge&roomId=fuga
 query string で指定可能です。
 
 ```
-http://localhost:3000/recvonly.html?key=xxxxxxxxxxxxx
+http://localhost:3000/recvonly.html?signalingKey=xxxxxxxxxxxxx
 ```
 
 

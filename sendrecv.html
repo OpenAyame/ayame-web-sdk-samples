@@ -30,6 +30,9 @@
       <script type="text/javascript">
         const options = Ayame.defaultOptions;
         options.clientId = clientId ? clientId : options.clientId;
+        if (signalingKey) {
+          options.signalingKey = signalingKey;
+        }
         const remoteVideo = document.querySelector('#remote-video');
         let conn;
         const disconnect = () => {
@@ -52,7 +55,7 @@
               console.log('error auto play:' + error);
             }
           });
-          await conn.connect(mediaStream, { authnMetadata, key: signalingKey });
+          await conn.connect(mediaStream, { authnMetadata });
           document.querySelector('#local-video').srcObject = mediaStream;
         };
         document.querySelector("#roomIdInput").value = roomId;

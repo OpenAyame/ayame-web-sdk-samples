@@ -27,6 +27,9 @@
       <script type="text/javascript">
         const options = Ayame.defaultOptions;
         options.clientId = clientId ? clientId : options.clientId;
+        if (signalingKey) {
+          options.signalingKey = signalingKey;
+        }
         options.video.direction = 'sendonly';
         options.audio.direction = 'sendonly';
         let conn;
@@ -39,7 +42,7 @@
           conn = Ayame.connection(signalingUrl, roomId, options, true);
           const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true});
           conn.on('disconnect', (e) => console.log(e));
-          await conn.connect(mediaStream, {key: signalingKey});
+          await conn.connect(mediaStream, null);
           document.querySelector('#local-video').srcObject = mediaStream;
         };
         document.querySelector("#roomIdInput").value = roomId;
