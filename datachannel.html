@@ -40,8 +40,12 @@
             conn.disconnect();
           }
         }
+        const label = 'dataChannel';
         const startConn = async () => {
           conn = Ayame.connection(signalingUrl, roomId, options, true);
+          conn.on('open', (e) => {
+            conn.addDataChannel(label);
+          });
           conn.on('data', (e) => {
             const messages = document.querySelector("#messages").value;
             newMessages = messages ? (messages + '\n' + e.data) : e.data;
