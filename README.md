@@ -19,14 +19,14 @@ yarn install
 yarn serve
 ```
 
-localhost:3000 で閲覧可能です。
+localhost:5000 で閲覧可能です。
 
 ## clientId, roomId  を指定したい
 
 query string で指定可能です。
 
 ```
-http://localhost:3000/recvonly.html?clientId=hoge&roomId=fuga
+http://localhost:5000/recvonly.html?clientId=hoge&roomId=fuga
 ```
 
 ## シグナリングキーを指定したい
@@ -34,7 +34,7 @@ http://localhost:3000/recvonly.html?clientId=hoge&roomId=fuga
 query string で指定可能です。
 
 ```
-http://localhost:3000/recvonly.html?key=xxxxxxxxxxxxx
+http://localhost:5000/recvonly.html?signalingKey=xxxxxxxxxxxxx
 ```
 
 

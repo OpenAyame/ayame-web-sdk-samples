@@ -21,12 +21,15 @@
       <div style="float:left;">
         <video id="local-video" autoplay style="width: 400px; height: 300px; border: 1px solid black;"></video>
       </div>
-      <script src="https://cdn.jsdelivr.net/npm/@open-ayame/ayame-web-sdk@19.9.0/dist/ayame.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@open-ayame/ayame-web-sdk@19.12.0/dist/ayame.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
       <script src="./main.js"></script>
       <script type="text/javascript">
         const options = Ayame.defaultOptions;
         options.clientId = clientId ? clientId : options.clientId;
+        if (signalingKey) {
+          options.signalingKey = signalingKey;
+        }
         options.video.direction = 'sendonly';
         options.audio.direction = 'sendonly';
         let conn;
@@ -39,7 +42,7 @@
           conn = Ayame.connection(signalingUrl, roomId, options, true);
           const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true});
           conn.on('disconnect', (e) => console.log(e));
-          await conn.connect(mediaStream, {key: signalingKey});
+          await conn.connect(mediaStream, null);
           document.querySelector('#local-video').srcObject = mediaStream;
         };
         document.querySelector("#roomIdInput").value = roomId;
