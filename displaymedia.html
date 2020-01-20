@@ -19,10 +19,10 @@
         <button onclick="disconnect();">切断</button>
       </div>
       <div style="float:left;">
-        <video id="local-video" muted autoplay style="width: 400px; height: 300px; border: 1px solid black;"></video>
+        <video id="local-video" muted autoplay controls style="width: 400px; height: 300px; border: 1px solid black;"></video>
       </div>
       <div style="float:right;">
-        <video id="remote-video" autoplay style="width: 400px; height: 300px; border: 1px solid black;"></video>
+        <video id="remote-video" autoplay controls style="width: 400px; height: 300px; border: 1px solid black;"></video>
       </div>
       <script src="https://unpkg.com/@open-ayame/ayame-web-sdk@2020.1.0/dist/ayame.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
@@ -43,7 +43,7 @@
         }
         const startConn = async () => {
           conn = Ayame.connection(signalingUrl, roomId, options, true);
-          const mediaStream = await navigator.mediaDevices.getDisplayMedia();
+          const mediaStream = await navigator.mediaDevices.getDisplayMedia({video: true});
           conn.on('disconnect', (e) => console.log(e));
           conn.on('addstream', async (e) => {
             console.log(e.stream);
