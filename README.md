@@ -56,8 +56,11 @@ const signalingUrl = 'wss://ayame-lite.shiguredo.jp/signaling';
 - [recvonly(受信のみ)](./recvonly.html)
 - [sendonly(送信のみ)](./sendonly.html)
 - [getDisplayMedia(画面共有)](./displaymedia.html)
-- [コーデック指定](./codec.html)
 - [DataChannel](./datachannel.html)
+
+### 映像コーデック の指定について
+
+sendrecv.html、recvonly.html、sendonly.html の映像コーデックの指定は、Google Chrome、Microsoft Edge でのみ有効です。
 
 
 ## ライセンス
