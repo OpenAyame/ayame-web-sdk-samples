@@ -1,6 +1,5 @@
 ## ayame-web-sdk-samples
 
-
 [OpenAyame/ayame-web-sdk](https://github.com/OpenAyame/ayame-web-sdk) のサンプル集です。
 
 ## オンラインサンプル
@@ -62,13 +61,13 @@ const signalingUrl = 'wss://ayame-lite.shiguredo.jp/signaling';
 
 sendrecv.html、recvonly.html、sendonly.html の映像コーデックの指定は、Google Chrome、Microsoft Edge でのみ有効です。
 
-
 ## ライセンス
 
 Apache License 2.0
 
 ```
-Copyright 2019, Shiguredo Inc, Kyoko Kadowaki (kdxu)
+Copyright 2019, Kyoko Kadowaki aka kdxu (Original Author)
+Copyright 2019-2020, Shiguredo Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
