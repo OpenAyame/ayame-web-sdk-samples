@@ -82,3 +82,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
+## 開発について
+
+Ayame Web SDK サンプルはオープンソースソフトウェアですが、開発についてはオープンではありません。
+そのためコメントやプルリクエストを頂いてもすぐには採用はしません。
+
+まずは Discord にてご連絡ください。
+
+## Discord
+
+アドバイスはしますが、サポートはしません。
+
+https://discord.gg/mDesh2E
