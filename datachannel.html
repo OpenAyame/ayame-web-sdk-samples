@@ -24,7 +24,7 @@
         <p> 受信したメッセージ </p>
         <textarea style="height:200px;" id="messages" disabled type="text" value=""></textarea>
       </div>
-      <script src="https://cdn.jsdelivr.net/npm/@open-ayame/ayame-web-sdk@2020.1.2/dist/ayame.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@open-ayame/ayame-web-sdk@2020.2.1/dist/ayame.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.7.0/qs.min.js"></script>
       <script src="./main.js"></script>
       <script type="text/javascript">
@@ -39,25 +39,42 @@
             conn.disconnect();
           }
         }
+        let dataChannel = null;
         const label = 'dataChannel';
         const startConn = async () => {
           conn = Ayame.connection(signalingUrl, roomId, options, true);
-          conn.on('open', (e) => {
-            conn.addDataChannel(label);
+          conn.on('open', async (e) => {
+            dataChannel = await conn.createDataChannel(label);
+            if (dataChannel) {
+              dataChannel.onmessage = onMessage;
+            }
           });
-          conn.on('data', (e) => {
-            const messages = document.querySelector("#messages").value;
-            newMessages = messages ? (messages + '\n' + e.data) : e.data;
-            document.querySelector("#messages").value = newMessages;
+          conn.on('datachannel', (channel) => {
+            if (!dataChannel) {
+              dataChannel = channel;
+              dataChannel.onmessage = onMessage;
+            }
+          });
+          conn.on('disconnect', (e) => {
+            console.log(e);
+            dataChannel = null;
           });
           await conn.connect(null);
         };
         const sendData = () => {
           const data = document.querySelector("#sendDataInput").value;
-          conn.sendData(data);
+          if (dataChannel && dataChannel.readyState === 'open') {
+            dataChannel.send(data);
+          }
         };
         document.querySelector("#roomIdInput").value = roomId;
         document.querySelector("#clientIdInput").value = options.clientId;
+
+        function onMessage(e) {
+          const messages = document.querySelector("#messages").value;
+          newMessages = messages ? (messages + '\n' + e.data) : e.data;
+          document.querySelector("#messages").value = newMessages;
+        }
       </script>
   </body>
 </html>
