@@ -41,6 +41,7 @@
         }
         options.video.direction = 'recvonly';
         options.audio.direction = 'recvonly';
+        const remoteVideo = document.querySelector('#remote-video');
         let conn;
         const disconnect = () => {
           if (conn) {
@@ -52,9 +53,12 @@
           conn = Ayame.connection(signalingUrl, roomId, options, true);
           await conn.connect(null);
           conn.on('open', ({authzMetadata}) => console.log(authzMetadata));
-          conn.on('disconnect', (e) => console.log(e));
+          conn.on('disconnect', (e) => {
+            console.log(e);
+            remoteVideo.srcObject = null;
+          });
           conn.on('addstream', (e) => {
-            document.querySelector('#remote-video').srcObject = e.stream;
+            remoteVideo.srcObject = e.stream;
           });
         };
         document.querySelector("#roomIdInput").value = roomId;

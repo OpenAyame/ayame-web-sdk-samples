@@ -38,9 +38,11 @@
         options.clientId = clientId ? clientId : options.clientId;
         if (signalingKey) {
           options.signalingKey = signalingKey;
+          console.log(options.signalingKey);
         }
         options.video.direction = 'sendonly';
         options.audio.direction = 'sendonly';
+        const localVideo = document.querySelector('#local-video');
         let conn;
         const disconnect = () => {
           if(conn) {
@@ -51,9 +53,12 @@
           options.video.codec = videoCodec;
           conn = Ayame.connection(signalingUrl, roomId, options, true);
           const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true});
-          conn.on('disconnect', (e) => console.log(e));
+          conn.on('disconnect', (e) => {
+            console.log(e);
+            localVideo.srcObject = null;
+          });
           await conn.connect(mediaStream, null);
-          document.querySelector('#local-video').srcObject = mediaStream;
+          localVideo.srcObject = mediaStream;
         };
         document.querySelector("#roomIdInput").value = roomId;
         document.querySelector("#clientIdInput").value = options.clientId;
