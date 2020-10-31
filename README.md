@@ -45,10 +45,10 @@ http://localhost:5000/recvonly.html?signalingKey=xxxxxxxxxxxxx
 
 `./main.js`
 
-の 
+の
 
 ```javascript
-const signalingUrl = 'wss://ayame-lite.shiguredo.jp/signaling';
+const signalingUrl = 'wss://ayame-labo.shiguredo.jp/signaling';
 ```
 
 を適宜書き換えることで、変更可能です。

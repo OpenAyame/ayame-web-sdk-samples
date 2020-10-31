@@ -1,9 +1,11 @@
-const signalingUrl = 'wss://ayame-lite.shiguredo.jp/signaling';
-let roomId = 'ayame-sdk-test';
+const signalingUrl = 'wss://ayame-labo.shiguredo.jp/signaling';
+// let roomId = 'ayame-sdk-test-shiguredo';
+let roomId = 'shiguredo@ayame-labo';
 let clientId = null;
 let videoCodec = null;
 let audioCodec = null;
-let signalingKey = null;
+let signalingKey = "XGY_T0_IyONaQukQUmRVVnDQc9PHIKHW2dfN9GGVq9e9IZBL";
+// let signalingKey = null;
 
 function onChangeVideoCodec() {
   videoCodec = document.getElementById("video-codec").value;
