@@ -42,6 +42,7 @@
         if (signalingKey) {
           options.signalingKey = signalingKey;
         }
+        const localVideo = document.querySelector('#local-video');
         const remoteVideo = document.querySelector('#remote-video');
         let conn;
         const disconnect = () => {
@@ -55,13 +56,17 @@
           const mediaStream = await navigator.mediaDevices.getUserMedia({audio: true, video: true})
           const authnMetadata = {hoge: "fuga"};
           conn.on('open', ({authzMetadata}) => console.log(authzMetadata));
-          conn.on('disconnect', (e) => console.log(e));
+          conn.on('disconnect', (e) => {
+            console.log(e);
+            localVideo.srcObject = null;
+            remoteVideo.srcObject = null;
+          });
           conn.on('addstream', async (e) => {
             console.log(e.stream);
             remoteVideo.srcObject = e.stream;
           });
           await conn.connect(mediaStream, { authnMetadata });
-          document.querySelector('#local-video').srcObject = mediaStream;
+          localVideo.srcObject = mediaStream;
         };
         document.querySelector("#roomIdInput").value = roomId;
         document.querySelector("#clientIdInput").value = options.clientId;

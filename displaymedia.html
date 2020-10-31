@@ -34,6 +34,7 @@
           options.signalingKey = signalingKey;
         }
         options.audio.enabled = false;
+        const localVideo = document.querySelector('#local-video');
         const remoteVideo = document.querySelector('#remote-video');
         let conn;
         const disconnect = () => {
@@ -44,13 +45,17 @@
         const startConn = async () => {
           conn = Ayame.connection(signalingUrl, roomId, options, true);
           const mediaStream = await navigator.mediaDevices.getDisplayMedia({video: true});
-          conn.on('disconnect', (e) => console.log(e));
+          conn.on('disconnect', (e) => {
+            console.log(e);
+            localVideo.srcObject = null;
+            remoteVideo.srcObject = null;
+          });
           conn.on('addstream', async (e) => {
             console.log(e.stream);
             remoteVideo.srcObject = e.stream;
           });
           await conn.connect(mediaStream, null);
-          document.querySelector('#local-video').srcObject = mediaStream;
+          localVideo.srcObject = mediaStream;
         };
         document.querySelector("#roomIdInput").value = roomId;
         document.querySelector("#clientIdInput").value = options.clientId;
