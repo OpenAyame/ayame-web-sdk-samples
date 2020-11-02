@@ -3,8 +3,7 @@ let roomId = 'ayame-web-sdk-sample';
 let clientId = null;
 let videoCodec = null;
 let audioCodec = null;
-let signalingKey = "XGY_T0_IyONaQukQUmRVVnDQc9PHIKHW2dfN9GGVq9e9IZBL";
-// let signalingKey = null;
+let signalingKey = null;
 
 function onChangeVideoCodec() {
   videoCodec = document.getElementById("video-codec").value;
