@@ -70,8 +70,8 @@ sendrecv.html、recvonly.html、sendonly.html の映像コーデックの指定�
 Apache License 2.0
 
 ```
+Copyright 2019-2021, Shiguredo Inc.
 Copyright 2019, Kyoko Kadowaki aka kdxu (Original Author)
-Copyright 2019-2020, Shiguredo Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
