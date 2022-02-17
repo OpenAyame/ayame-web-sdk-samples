@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/OpenAyame/ayame-web-sdk-samples#readme",
   "devDependencies": {
-    "webpack": "^4.44.0",
+    "webpack": "^5.69.1",
     "webpack-nano": "^1.0.0",
     "webpack-plugin-serve": "^1.0.1"
   }
