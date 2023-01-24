@@ -10,16 +10,16 @@
 
 https://openayame.github.io/ayame-web-sdk-samples/index.html
 
-## yarn install でセットアップ
+## npm install でセットアップ
 
 ```
-yarn install
+npm install
 ```
 
-## yarn で起動
+## npm run dev で起動
 
 ```
-yarn serve
+npm run dev
 ```
 
 localhost:5000 で閲覧可能です。
@@ -70,7 +70,7 @@ sendrecv.html、recvonly.html、sendonly.html の映像コーデックの指定�
 Apache License 2.0
 
 ```
-Copyright 2019-2021, Shiguredo Inc.
+Copyright 2019-2023, Shiguredo Inc.
 Copyright 2019, Kyoko Kadowaki aka kdxu (Original Author)
 
 Licensed under the Apache License, Version 2.0 (the "License");
