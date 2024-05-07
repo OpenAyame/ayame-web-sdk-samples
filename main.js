@@ -1,5 +1,5 @@
-const signalingUrl = 'wss://ayame-labo.shiguredo.app/signaling';
-let roomId = 'ayame-web-sdk-sample';
+const signalingUrl = "wss://ayame-labo.shiguredo.app/signaling";
+let roomId = "ayame-web-sdk-sample";
 let clientId = null;
 let videoCodec = null;
 let audioCodec = null;
@@ -7,7 +7,7 @@ let signalingKey = null;
 
 function onChangeVideoCodec() {
   videoCodec = document.getElementById("video-codec").value;
-  if (videoCodec == 'none') {
+  if (videoCodec == "none") {
     videoCodec = null;
   }
 }
@@ -28,12 +28,10 @@ function parseQueryString() {
   }
 }
 
-
 parseQueryString();
 
 const roomIdInput = document.getElementById("roomIdInput");
-roomIdInput.addEventListener('change', (event) => {
+roomIdInput.addEventListener("change", (event) => {
   console.log(event);
   roomId = event.target.value;
 });
-
